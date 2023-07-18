@@ -15,8 +15,21 @@ This patcher will upgrade your crossover app with the latest dxvk and moltenvk p
 # What does it NOT do?
 - Games with anti-cheat or anti-tamper will not work
 
-~- Dx12 games will not work unless playable via the popular -dx11 option~
+- ~Dx12 games will not work unless playable via the popular -dx11 option~
 Dx12 games will not work via gptk
+
+# Installation
+You can either download the latest version from the [Release section](https://github.com/italomandara/CXPatcher/releases) or use Homebrew.
+
+```
+brew tap italomandara/CXPatcher
+brew update && brew install --cask cxpatcher
+```
+Optional (if you want to make the Media Foundation Libraries work):
+
+```
+brew install --cask gstreamer
+```
 
 # Instructions
 You need to have an unmodified version of Crossover, you can download it at: https://www.codeweavers.com/account/downloads, please make sure the app has been registered or ran at least once, to make sure the latest dxvk is activated properly You may need to switch off dxvk and on again, if you don't you will need to re-download it. If the patcher renders the app unusable you can either use the restore function (see instructions below) or download it again from the website, it doesn't do any permanent modifications to your 'bottles'.
@@ -61,7 +74,7 @@ You can change the way the colors are processed in ue4 games.
 
 **examples:**
 
-**disable color profiles** 
+**disable color profiles**
 
 (old greyish colors but may improve performance or fix dark or oversaturated colors)
 
@@ -71,12 +84,12 @@ You can change the way the colors are processed in ue4 games.
 
 `NAS_TONEMAP_C=clamp({inputColor} * float3x3( 0.2126 + 0.7874 * 1.5, 0.7152 - 0.7152 * 1.5, 0.0722 - 0.0722 * 1.5, 0.2126 - 0.2126 * 1.5, 0.7152 + 0.2848 * 1.5, 0.0722 - 0.0722 * 1.5, 0.2126 - 0.2126 * 1.5, 0.7152 - 0.7152 * 1.5, 0.0722 + 0.9278 * 1.5 ) * 2 - float3(0.28, 0.2, 0.16), 0.0, 1.0)`
 
-`NAS_TONEMAP_C` uses standard MSL shading language, as long as it's done in one line, you can use {inputColor} as a variable and modify the colors, or give any effect you like using matrix transforms, WARNING: do not copy paste any code from unknown sources, and do this only if you know what you're doing, otherwise, have fun! 
+`NAS_TONEMAP_C` uses standard MSL shading language, as long as it's done in one line, you can use {inputColor} as a variable and modify the colors, or give any effect you like using matrix transforms, WARNING: do not copy paste any code from unknown sources, and do this only if you know what you're doing, otherwise, have fun!
 
 **Note:** you may need to use `CXPATCHER_SKIP_DXVK_ENV=1` to override built in settings for games that already have a profile `NAS_TONEMAP_C`, also only works for UE4 games.
 
 # Credits
-Many thanks to the developers behind DXVK and MoltenVK patches: 
+Many thanks to the developers behind DXVK and MoltenVK patches:
 - @gcenx (https://github.com/Gcenx)
 - @nastys (https://github.com/nastys)
 
